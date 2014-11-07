@@ -13,9 +13,9 @@
         <p>{{ list.current.artist }}</p>
       </header>
       <div class="action">
-        <a href="#" class="play" ng-click="player.play()" ng-hide="player.isPlaying">Play</a>
-        <a href="#" class="pause" ng-click="player.pause()" ng-show="player.isPlaying">Pause</a>
-        <a href="#" class="next" ng-click="list.next()">Next</a>
+        <a href="javascript:void(0);" class="play" ng-click="player.play()" ng-hide="player.isPlaying">Play</a>
+        <a href="javascript:void(0);" class="pause" ng-click="player.pause()" ng-show="player.isPlaying">Pause</a>
+        <a href="javascript:void(0);" class="next" ng-click="list.next()">Next</a>
       </div>
       <span class="time">{{ player.currentTime - player.duration | time }}</span>
       <progress class="progress" max="{{ player.duration }}" value="{{ player.currentTime }}"></progress>
