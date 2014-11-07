@@ -6,7 +6,7 @@ Yet another music player application.
 
 MIT License
 
-## Run
+## Build & Run
 
 ```shell
 $ pub get
