@@ -1,0 +1,8 @@
+name: InMusic
+dependencies:
+  browser: any
+  angular: any
+transformers:
+- angular
+- $dart2js:
+    minify: false

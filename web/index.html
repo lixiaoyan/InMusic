@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <title>InMusic</title>
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body ng-cloak>
+    <div class="control">
+      <header>
+        <h1><a href="{{ list.current.external }}" target="_blank">{{ list.current.title }}</a></h1>
+        <p>{{ list.current.artist }}</p>
+      </header>
+      <div class="action">
+        <a href="#" class="play" ng-click="player.play()" ng-hide="player.isPlaying">Play</a>
+        <a href="#" class="pause" ng-click="player.pause()" ng-show="player.isPlaying">Pause</a>
+        <a href="#" class="next" ng-click="list.next()">Next</a>
+      </div>
+      <span class="time">{{ player.currentTime - player.duration | time }}</span>
+      <progress class="progress" max="{{ player.duration }}" value="{{ player.currentTime }}"></progress>
+    </div>
+    <script type="application/dart" src="./main.dart"></script>
+    <script src="./packages/browser/dart.js"></script>
+  </body>
+</html>

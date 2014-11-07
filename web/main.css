@@ -1,0 +1,192 @@
+[ng-cloak] {
+  display: none !important;
+}
+
+.ng-hide {
+  display: none !important;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family:
+    "Open Sans", "Roboto", "Helvetica Neue", "Helvetica", "Arial",
+    "Lantinghei SC", "Lantinghei TC",
+    "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN",
+    "Noto Sans CJK TC", "Source Han Sans TW", "Noto Sans CJK JP",
+    "Source Han Sans JP", "Noto Sans CJK", "Source Han Sans",
+    "Microsoft YaHei", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+  background-color: #eee;
+}
+
+a {
+  border-color: #ddd;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  text-decoration: none;
+  color: #444;
+  transition: border-color 200ms;
+}
+
+a:hover, a:active, a:focus {
+  border-color: #39f;
+  outline: none;
+}
+
+h1, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: #444;
+}
+
+.control {
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 1.6em 3.2em;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 20px #ddd;
+}
+
+.control header {
+  margin-bottom: 1.6em;
+}
+
+.control h1,
+.control p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.control p {
+  margin-top: 0.4em;
+}
+
+.control p:empty:after {
+  content: "...";
+}
+
+.time {
+  display: block;
+  margin-top: -1em;
+  line-height: 1;
+  text-align: right;
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+}
+
+.progress::-webkit-progress-bar {
+  background-color: #cdf;
+}
+
+.progress::-webkit-progress-value {
+  background-color: #39f;
+}
+
+.play, .pause, .next {
+  position: relative;
+  display: inline-block;
+  margin-right: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 100%;
+  vertical-align: bottom;
+  font: 0/0 a;
+  color: transparent;
+}
+
+.play, .pause {
+  width: 48px;
+  height: 48px;
+}
+
+.next {
+  width: 36px;
+  height: 36px;
+}
+
+.play:before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  height: 20px;
+  margin: auto;
+  border-left: 16px solid;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  color: #666;
+}
+
+.pause:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  height: 20px;
+  margin: auto;
+  border-left: 5px solid;
+  border-right: 5px solid;
+  color: #666;
+}
+
+.next:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  height: 16px;
+  margin: auto;
+  border-left: 9px solid;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  color: #666;
+}
+
+.next:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  height: 16px;
+  margin: auto;
+  border-right: 3px solid;
+  color: #666;
+}
