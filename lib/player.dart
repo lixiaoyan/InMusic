@@ -5,9 +5,15 @@ import "dart:html";
 import "dart:web_audio";
 
 class AudioPlayer {
+  static const double fadeTime = 0.8;
+  static const Duration fadeDuration = const Duration(milliseconds: 800);
+
   AudioElement _audioElement;
   AudioContext _audioContext;
   MediaElementAudioSourceNode _audioSource;
+  GainNode _gainNode;
+
+  Timer _fadeTimer = null;
 
   Stream<Event> get onCanPlay => _audioElement.onCanPlay;
   Stream<Event> get onTimeUpdate => _audioElement.onTimeUpdate;
@@ -31,12 +37,18 @@ class AudioPlayer {
     }
   }
   void play() {
+    if(_fadeTimer != null) {
+      _fadeTimer.cancel();
+      _fadeTimer = null;
+    }
     isPlaying = true;
     _audioElement.play();
+    _gainNode.gain.linearRampToValueAtTime(1.0, _audioContext.currentTime + fadeTime);
   }
   void pause() {
     isPlaying = false;
-    _audioElement.pause();
+    _gainNode.gain.linearRampToValueAtTime(0.0, _audioContext.currentTime + fadeTime);
+    _fadeTimer = new Timer(fadeDuration, () => _audioElement.pause());
   }
   void seek(double time) {
     currentTime = time;
@@ -55,7 +67,11 @@ class AudioPlayer {
     _audioElement = new AudioElement();
     _audioContext = new AudioContext();
     _audioSource = _audioContext.createMediaElementSource(_audioElement);
-    _audioSource.connectNode(_audioContext.destination);
+    _gainNode = _audioContext.createGain();
+    _audioSource.connectNode(_gainNode);
+    _gainNode.connectNode(_audioContext.destination);
+
+    _gainNode.gain.value = 0.0;
 
     _audioElement.onCanPlay.listen((_) {
       duration = _audioElement.duration;
