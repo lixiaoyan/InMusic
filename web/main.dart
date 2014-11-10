@@ -39,6 +39,7 @@ class App {
     list.onBeforeChange.listen((data) {
       if(data != null) {
         history.add(data);
+        history.save();
       }
     });
     list.onChanged.listen((data) => player.load(data.url, autoplay: true));
