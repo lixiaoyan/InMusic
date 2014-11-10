@@ -69,6 +69,10 @@ packages:
     description: route_hierarchical
     source: hosted
     version: "0.5.0"
+  serialization:
+    description: serialization
+    source: hosted
+    version: "0.10.0"
   smoke:
     description: smoke
     source: hosted

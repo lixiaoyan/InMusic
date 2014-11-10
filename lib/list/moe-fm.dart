@@ -14,9 +14,10 @@ class MoeFMList extends PlayList {
     }
   }
   void _next() {
+    _onBeforeChangeController.add(current);
     current = _cached[0];
     _cached.removeAt(0);
-    _onLoadedController.add(current);
+    _onChangedController.add(current);
   }
   void _load() {
     isLoading = true;
@@ -26,14 +27,14 @@ class MoeFMList extends PlayList {
     }).toString()).then((data) {
       var list = data["response"]["playlist"] as List;
       list.forEach((item) {
-        _cached.add(new MusicInfo(
-          title: item["sub_title"],
-          artist: item["artist"],
-          album: item["wiki_title"],
-          url: item["url"],
-          cover: item["cover"]["medium"],
-          external: item["sub_url"]
-        ));
+        _cached.add(new MusicInfo()
+          ..title = item["sub_title"]
+          ..artist = item["artist"]
+          ..album = item["wiki_title"]
+          ..url = item["url"]
+          ..cover = item["cover"]["medium"]
+          ..external = item["sub_url"]
+        );
       });
       isLoading = false;
       _next();

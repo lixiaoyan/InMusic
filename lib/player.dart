@@ -30,6 +30,8 @@ class AudioPlayer {
   bool isPlaying = false;
 
   void load(String url, {bool autoplay: false}) {
+    duration = 0.0;
+    currentTime = 0.0;
     _audioElement.src = url;
     _audioElement.load();
     if(autoplay) {

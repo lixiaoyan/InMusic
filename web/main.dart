@@ -3,6 +3,7 @@ import "package:angular/application_factory.dart";
 
 import "package:InMusic/player.dart";
 import "package:InMusic/list.dart";
+import "package:InMusic/history.dart";
 
 @Formatter(name: "time")
 class TimeFilter {
@@ -23,11 +24,17 @@ class TimeFilter {
 class App {
   AudioPlayer player = new AudioPlayer();
   PlayList list = null;
+  History history = new History()..load();
 
   App() {
     list = new MoeFMList();
     player.onEnded.listen((_) => list.next());
-    list.onLoaded.listen((data) => player.load(data.url, autoplay: true));
+    list.onBeforeChange.listen((data) {
+      if(data != null) {
+        history.list.add(data);
+      }
+    });
+    list.onChanged.listen((data) => player.load(data.url, autoplay: true));
     list.next();
   }
 }

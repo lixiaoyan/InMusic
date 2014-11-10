@@ -17,8 +17,15 @@
         <a href="javascript:void(0);" class="pause" ng-click="player.pause()" ng-show="player.isPlaying">Pause</a>
         <a href="javascript:void(0);" class="next" ng-click="list.next()">Next</a>
       </div>
-      <span class="time">{{ player.currentTime - player.duration | time }}</span>
+      <span class="time">-{{ player.duration - player.currentTime | time }}</span>
       <progress class="progress" max="{{ player.duration }}" value="{{ player.currentTime }}"></progress>
+    </div>
+    <div class="history" ng-hide="history.list.isEmpty">
+      <ul>
+        <li ng-repeat="music in history.list">
+          <a href="{{ music.external }}" target="_blank">{{ music.title }}</a>
+        </li>
+      </ul>
     </div>
     <script type="application/dart" src="./main.dart"></script>
     <script src="./packages/browser/dart.js"></script>

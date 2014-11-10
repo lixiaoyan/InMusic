@@ -11,13 +11,8 @@
   box-sizing: border-box;
 }
 
-html, body {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
 body {
+  margin: 120px 60px;
   font-family:
     "Open Sans", "Roboto", "Helvetica Neue", "Helvetica", "Arial",
     "Lantinghei SC", "Lantinghei TC",
@@ -59,7 +54,7 @@ h1 {
   position: relative;
   overflow: hidden;
   max-width: 400px;
-  margin: 120px auto;
+  margin: 60px auto;
   padding: 1.6em 3.2em;
   background-color: #f9f9f9;
   box-shadow: 0 0 20px #ddd;
@@ -188,5 +183,31 @@ h1 {
   height: 16px;
   margin: auto;
   border-right: 3px solid;
+  color: #666;
+}
+
+.history {
+  overflow: hidden;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 1.6em 3.2em;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 20px #ddd;
+}
+
+.history ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history li {
+  overflow: hidden;
+  margin: 0.8em 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.history a {
   color: #666;
 }
