@@ -2,7 +2,6 @@ name: InMusic
 dependencies:
   browser: any
   angular: any
-  serialization: any
 transformers:
 - angular
 - $dart2js:

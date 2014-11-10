@@ -1,47 +1,25 @@
 library history;
 
-import "dart:collection";
 import "dart:convert";
 import "dart:html";
 
-import "package:serialization/serialization_mirrors.dart";
-
 import "./info.dart";
 
-class HistoryList extends IterableBase<MusicInfo> {
-  static const int size = 20;
-
-  List<MusicInfo> _list;
-  Iterator<MusicInfo> get iterator => _list.reversed.iterator;
-
-  HistoryList() : _list = [];
-  HistoryList.from(List<MusicInfo> list) :
-    _list = new List<MusicInfo>.from(list.reversed);
-
-  void add(MusicInfo value) {
-    _list.add(value);
-    if(_list.length > size) {
-      _list.removeAt(0);
-    }
-  }
-}
-
 class History {
+  static const int size = 20;
   static const String key = "InMusic_history";
 
   Storage storage = window.localStorage;
-  Serialization _serialization = new Serialization()
-    ..addRuleFor(MusicInfo);
-  HistoryList list;
+  List<MusicInfo> list;
 
   void _init() {
-    list = new HistoryList();
+    list = [];
     save();
   }
   void load() {
     if(storage.containsKey(key) && storage[key].isNotEmpty) {
       try {
-        list = new HistoryList.from(_serialization.read(JSON.decode(storage[key])));
+        list = new List.from((JSON.decode(storage[key]) as List).map((o) => new MusicInfo.fromJSON(o)));
       } catch(e) {
         _init();
       }
@@ -50,6 +28,13 @@ class History {
     }
   }
   void save() {
-    storage[key] = JSON.encode(_serialization.write(new List<MusicInfo>.from(list)));
+    storage[key] = JSON.encode(new List.from(list.map((o) => o.toJSON())));
+  }
+
+  void add(MusicInfo value) {
+    list.add(value);
+    if(list.length > size) {
+      list.removeAt(0);
+    }
   }
 }

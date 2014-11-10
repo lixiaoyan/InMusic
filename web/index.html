@@ -22,7 +22,7 @@
     </div>
     <div class="history" ng-hide="history.list.isEmpty">
       <ul>
-        <li ng-repeat="music in history.list">
+        <li ng-repeat="music in history.list | reverse">
           <a href="{{ music.external }}" target="_blank">{{ music.title }}</a>
         </li>
       </ul>

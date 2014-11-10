@@ -20,6 +20,13 @@ class TimeFilter {
   }
 }
 
+@Formatter(name: "reverse")
+class ReverseFilter {
+  Iterable call(List list) {
+    return list.reversed;
+  }
+}
+
 @Injectable()
 class App {
   AudioPlayer player = new AudioPlayer();
@@ -31,7 +38,7 @@ class App {
     player.onEnded.listen((_) => list.next());
     list.onBeforeChange.listen((data) {
       if(data != null) {
-        history.list.add(data);
+        history.add(data);
       }
     });
     list.onChanged.listen((data) => player.load(data.url, autoplay: true));
@@ -42,6 +49,7 @@ class App {
 class AppModule extends Module {
   AppModule() {
     bind(TimeFilter);
+    bind(ReverseFilter);
   }
 }
 
