@@ -92,6 +92,8 @@ h1 {
   bottom: 0;
   width: 100%;
   height: 2px;
+  border: none;
+  background-color: #cdf;
   -webkit-appearance: none;
 }
 
@@ -100,6 +102,10 @@ h1 {
 }
 
 .progress::-webkit-progress-value {
+  background-color: #39f;
+}
+
+.progress::-moz-progress-bar {
   background-color: #39f;
 }
 
@@ -184,6 +190,14 @@ h1 {
   margin: auto;
   border-right: 3px solid;
   color: #666;
+}
+
+.play:before,
+.pause:before,
+.next:before,
+.next:after {
+  /* CSS Hack for Firefox: Let triangle be more smooth. */
+  -moz-transform: scale(0.999);
 }
 
 .history {
